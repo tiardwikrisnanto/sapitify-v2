@@ -3,6 +3,7 @@ import '../../styles/index.css';
 import data from '../../data/dataSpotify';
 
 export const Conten = () =>  {
+
     return (
         <div className = "conten">
         <div>
