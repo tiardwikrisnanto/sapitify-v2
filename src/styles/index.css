@@ -1,0 +1,52 @@
+* {
+    color: white;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+.main-conten {
+    height: 100%;
+}
+
+.conten {
+    height: 100%;
+    text-align: center;
+    background-color: #121212;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+
+p {
+    font-size: 12px;
+}
+
+.conten_image {
+    width: 20%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+button {
+    padding: 15px 40px;
+    background-color: #5dca88;
+    cursor: pointer;
+    box-shadow: 0 2px #1a7940;
+    opacity: 0.8;
+    border-radius: 1rem;
+    
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
