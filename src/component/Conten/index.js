@@ -11,6 +11,7 @@ export const Conten = () =>  {
         </div>
 
         <div>
+            {/* Sudah sesuai ditaruh diluar main component sejak minggu lalu */}
             <h2>{data.name}</h2>
             <h3>{data.album.name}</h3>
             <p>{data.artists[0].name}</p>
