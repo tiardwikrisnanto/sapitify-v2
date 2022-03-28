@@ -8,6 +8,8 @@ html, body, #root {
 
 .main-conten {
     height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px));
 }
 
 .conten {
@@ -17,6 +19,7 @@ html, body, #root {
     justify-content: center;
     text-align: center;
     background-color: #121212;
+    padding: 10px 0;
 }
 
 h2 {
