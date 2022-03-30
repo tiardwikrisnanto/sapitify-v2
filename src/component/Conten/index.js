@@ -1,12 +1,12 @@
 import React from 'react';
 import '../../styles/index.css';
-import data from '../../data/dataSpotify';
 
-export const Conten = () => {
 
+export const Conten = props => {
+    const { tracks } = props;
     return (
         <>
-            {data.map((song) => {
+            {tracks.map((song) => {
                 return (<div className="conten">
                     <div>
                         <img src={song.album.images[0].url} className="conten_image" />
