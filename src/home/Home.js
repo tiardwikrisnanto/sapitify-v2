@@ -9,6 +9,8 @@ export default function Home() {
         tracks: [],
     });
 
+    const [selects, setSelects] = useState([]);
+
     const [search, setSearch] = useState("")
 
     function getSpotifyLinkAuthorize() {
@@ -61,7 +63,8 @@ export default function Home() {
                         isAuthorize: true,
                         tracks: tracks,
                     })
-                });
+                })
+                .catch((error) => console.log(error));
 
 
         } catch (e) {
@@ -69,12 +72,25 @@ export default function Home() {
         }
     }
 
+    function onSelected(id) {
+        const temp = selects;
+        temp.push(
+            {
+                'id': id,
+                'isSelected': true
+            }
+        )
+        setSelects([...temp]);
+        console.log(selects)
+    }
+
     useEffect(() => {
         authorize();
-    }, [])
+    }, [search])
 
 
     return (
+
         <>
             {!state.isAuthorize && (
                 <main className="center">
@@ -88,20 +104,18 @@ export default function Home() {
                     <main className="container" id="home">
                         <input type="text" placeholder="search" onChange={(event) => setSearch(event.target.value)} />
                         <button onClick={() => onSearch()}>Search</button>
+                        <p>{search}</p>
                         {
-                            state.tracks.length === 0 ? (
+
+                            state.tracks.length === 0 && selects.length === 0 ? (
                                 <p>Track Empty</p>
                             ) : (
-                                <Conten tracks={state.tracks} />
+                                <Conten tracks={state.tracks} onSelected={onSelected} selects={selects} />
                             )
                         }
                     </main>
                 )
-
-                
-
             }
-
         </>
     )
 }
