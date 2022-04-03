@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Conten } from "../component/Conten";
+import CreatePlaylist from "./Playlist";
+import { getUserProfile } from "../lib/fetchApi";
+import sapitifyy from "../image/sapitify.png"
 
 export default function Home() {
 
@@ -8,6 +11,8 @@ export default function Home() {
         isAuthorize: false,
         tracks: [],
     });
+
+    const [user, setUser] = useState({});
 
     const [selects, setSelects] = useState([]);
 
@@ -74,18 +79,30 @@ export default function Home() {
 
     function onSelected(id) {
         const temp = selects;
-        temp.push(
-            {
-                'id': id,
-                'isSelected': true
-            }
-        )
+        temp.push(id);
         setSelects([...temp]);
         console.log(selects)
     }
 
     useEffect(() => {
         authorize();
+        const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
+
+        if (accessTokenParams !== null) {
+
+
+            const setUserProfile = async () => {
+                try {
+                    const response = await getUserProfile(accessTokenParams);
+
+                    setUser(response);
+                } catch (e) {
+                    console.log(e);
+                }
+            }
+
+            setUserProfile();
+        }
     }, [search])
 
 
@@ -101,21 +118,31 @@ export default function Home() {
 
             {
                 state.isAuthorize && (
-                    <main className="container" id="home">
-                        <input type="text" placeholder="search" onChange={(event) => setSearch(event.target.value)} />
-                        <button onClick={() => onSearch()}>Search</button>
-                        <p>{search}</p>
-                        {
 
-                            state.tracks.length === 0 && selects.length === 0 ? (
-                                <p>Track Empty</p>
-                            ) : (
-                                <Conten tracks={state.tracks} onSelected={onSelected} selects={selects} />
-                            )
-                        }
-                    </main>
+                    <>
+
+
+                        <main className="container" id="home">
+                            <img src={sapitifyy} className="App-logo" alt="sapitifyy"></img>
+                            <div className="searchbar">
+                                <input type="text" placeholder="search" onChange={(event) => setSearch(event.target.value)} />
+                                <button type="button" onClick={() => onSearch()}>Search</button>
+                            </div>
+                            <CreatePlaylist uriTracks={selects} accessToken={state.accessToken} user={user} />
+                            {
+
+                                state.tracks.length === 0 && selects.length === 0 ? (
+                                    <p>Track Empty</p>
+                                ) : (
+                                    <Conten tracks={state.tracks} onSelected={onSelected} selects={selects} />
+                                )
+                            }
+                        </main>
+                    </>
                 )
             }
         </>
     )
+
+
 }
