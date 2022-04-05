@@ -83,7 +83,9 @@ export default function Home() {
         setSelects([...temp]);
         console.log(selects)
     }
+    
 
+    
     useEffect(() => {
         authorize();
         const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
