@@ -3,6 +3,7 @@ import { Conten } from "../component/Conten";
 import CreatePlaylist from "./Playlist";
 import { getUserProfile } from "../lib/fetchApi";
 import sapitifyy from "../image/sapitify.png"
+import { Navigate } from "react-router-dom";
 
 export default function Home() {
 
@@ -18,38 +19,11 @@ export default function Home() {
 
     const [search, setSearch] = useState("")
 
-    function getSpotifyLinkAuthorize() {
-        const state = Date.now().toString();
-        const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-
-        console.log(process.env.REACT_APP_SPOTIFY_SCOPE);
-
-        return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=http://localhost:3000&state=${state}&scope=${process.env.REACT_APP_SPOTIFY_SCOPE}`
-    };
-
-    function getHashParams() {
-        const hashParams = {};
-        const r = /([^&;=]+)=?([^&;]*)/g;
-        const q = window.location.hash.substring(1);
-        let e = r.exec(q);
-
-        while (e) {
-            hashParams[e[1]] = decodeURIComponent(e[2]);
-            e = r.exec(q);
-        }
-        return hashParams;
-    }
-
-    function authorize() {
-        const params = getHashParams();
-        const { access_token: accessToken } = params;
-
-        setState({ accessToken, isAuthorize: accessToken !== undefined, tracks: [] })
-
-    }
 
     async function onSearch() {
         const token = state.accessToken;
+
+        console.log(token);
 
         var requestOptions = {
             headers: {
@@ -83,15 +57,25 @@ export default function Home() {
         setSelects([...temp]);
         console.log(selects)
     }
-    
+    function onLogout() {
+        console.log(localStorage.getItem('access_token'));
+        localStorage.removeItem('access_token');
 
-    
+        
+    }
+
+
+
     useEffect(() => {
-        authorize();
-        const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
+        setState({
+            accessToken: new URLSearchParams(window.location.hash).get('#access_token'),
+            isAuthorize: true,
+            tracks: [],
+        });
+        const accessTokenParams = state.accessToken;
 
         if (accessTokenParams !== null) {
-
+    
 
             const setUserProfile = async () => {
                 try {
@@ -111,38 +95,31 @@ export default function Home() {
     return (
 
         <>
-            {!state.isAuthorize && (
-                <main className="center">
-                    <p>Login for next step...</p>
-                    <button><a href={getSpotifyLinkAuthorize()}>authorize</a></button>
-                </main>
-            )}
-
-            {
-                state.isAuthorize && (
-
-                    <>
+            {localStorage.getItem('access_token') !== undefined ? (
+                <>
 
 
-                        <main className="container" id="home">
-                            <img src={sapitifyy} className="App-logo" alt="sapitifyy"></img>
-                            <div className="searchbar">
-                                <input type="text" placeholder="search" onChange={(event) => setSearch(event.target.value)} />
-                                <button type="button" onClick={() => onSearch()}>Search</button>
-                            </div>
-                            <CreatePlaylist uriTracks={selects} accessToken={state.accessToken} user={user} />
-                            {
+                    <main className="container" id="home">
+                        <img src={sapitifyy} className="App-logo" alt="sapitifyy"></img>
+                        <div className="searchbar">
+                            <input type="text" placeholder="search" onChange={(event) => setSearch(event.target.value)} />
+                            <button type="button" onClick={() => onSearch()}>Search</button>
+                            {/* <button type="button" onClick={() => onLogout()}>Logout</button> */}
+                        </div>
+                        <CreatePlaylist uriTracks={selects} accessToken={state.accessToken} user={user} />
+                        {
 
-                                state.tracks.length === 0 && selects.length === 0 ? (
-                                    <p>Track Empty</p>
-                                ) : (
-                                    <Conten tracks={state.tracks} onSelected={onSelected} selects={selects} />
-                                )
-                            }
-                        </main>
-                    </>
-                )
-            }
+                            state.tracks.length === 0 && selects.length === 0 ? (
+                                <p>Track Empty</p>
+                            ) : (
+                                <Conten tracks={state.tracks} onSelected={onSelected} selects={selects} />
+                            )
+                        }
+                    </main>
+                </>
+            ) : (<Navigate to={'/login'} />)}
+
+
         </>
     )
 
