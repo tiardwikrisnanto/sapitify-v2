@@ -41,9 +41,9 @@ const CreatePlaylist = props => {
     return (
         <div className="playlist">
             <form onSubmit={onSubmit}>
-                <label for="cplaylist">Create Playlist</label>
+                <label htmlFor="cplaylist">Create Playlist</label>
                 <input type="text" id="cplaylist" name="cplaylist" placeholder="Bikin Playlistmu" onChange={handleChange}></input>
-                <label for="dplaylist">Deskripsi Playlist</label>
+                <label htmlFor="dplaylist">Deskripsi Playlist</label>
                 <textarea name="dplaylist" placeholder="Tulis deskripsi playlistmu disini"></textarea>
                 <button type="submit">Submit</button>
                 <ToastContainer type="success" />
