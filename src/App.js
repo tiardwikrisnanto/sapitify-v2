@@ -1,5 +1,6 @@
 
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import React from 'react';
+import {Route, Routes } from 'react-router-dom';
 import Login from './component/Conten/Login.js';
 import Home from './home/Home.js';
 
