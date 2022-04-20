@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import Conten from "../component/Conten";
 import CreatePlaylist from "./Playlist";
 import { getUserProfile, searchTracks } from "../lib/fetchApi";
-import sapitifyy from "../image/sapitify.png";
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectAuthorize } from "../slice/loginSlice";
 import { selectTracks, setTracks } from "../slice/trackSlice";
 import { getToken } from "../helpers/helper";
+
+import Appbar from "../Appbar/Appbar";
+
 
 export default function Home() {
   const logined = useSelector(selectAuthorize);
@@ -23,7 +25,7 @@ export default function Home() {
     dispatch(login(token));
   }
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({external_urls: {spotify: ''}, images: [{url: ''}]});
 
   const [selects, setSelects] = useState([]);
 
@@ -72,18 +74,13 @@ export default function Home() {
     <>
       {token !== null && token !== undefined ? (
         <>
+        <Appbar 
+        user ={user}
+        onChange ={setSearch}
+        onSearch ={onSearch}
+        />
           <main className="container" id="home">
-            <img src={sapitifyy} className="App-logo" alt="sapitifyy"></img>
-            <div className="searchbar">
-              <input
-                type="text"
-                placeholder="search"
-                onChange={(event) => setSearch(event.target.value)}
-              />
-              <button type="button" onClick={() => onSearch()}>
-                Search
-              </button>
-            </div>
+            
             <CreatePlaylist
               uriTracks={selects}
               accessToken={logined.accessToken}
