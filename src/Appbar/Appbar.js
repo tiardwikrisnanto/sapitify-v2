@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
 import SearchIcon from '@mui/icons-material/Search';
-
+import Avatar from '@mui/material/Avatar';
 
 import MoreIcon from '@mui/icons-material/MoreVert';
 import sapitifyy from "../image/sapitifycrop.png";
@@ -161,7 +161,7 @@ export default function Appbar({onChange, onSearch, user}) {
               onChange={(event) => onChange(event.target.value)}
             />
           </Search>
-          <IconButton style={{backgroundColor:"#5dca88"}}
+          <IconButton style={{backgroundColor:"#5dca88" }}
               size="large"
               onClick={onSearch}
               color="inherit"
@@ -172,21 +172,17 @@ export default function Appbar({onChange, onSearch, user}) {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             
-            <IconButton style={{backgroundColor:"#5dca88"}}
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
+            <IconButton sx={{ p:0}}
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <img src={user.images[0].url} width={24} height={24} />
+              <Avatar alt="Remy Sharp" src={user.images[0].url} />
+              {/* <img src={user.images[0].url} width={24} height={24} /> */}
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size="large"
+              size="large" 
               aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
