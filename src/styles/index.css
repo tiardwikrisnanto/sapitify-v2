@@ -1,31 +1,43 @@
 
 
 html, body, #root {
+    padding-top: 30px;
     height: 100%;
     color: black;
-    background-color: #191414;
+    background-color: #121212;
 }
 
 .main-conten {
-    height: 100%;
     display: grid;
+    width: fit-content;
     grid-template-columns: auto auto auto auto;
-    color: white;
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+    color: black;
+    margin: 0 auto 0 auto;
 }
 
 .conten {
-    height: 300px;
+    height: 270px;
+    width: 320px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    background-color: #121212;
-    padding: 10px 0;
+    background-color: #e1e1e123;
+    object-fit: cover;
+    border-radius: 15%;
+    padding-top: 40px;
+    padding-bottom: 50px;
     
 }
 
+.conten:hover {
+    background-color: #e1e1e13e
+}
+
+
 .select {
-    color: white;
     cursor: pointer;
     width: fit-content;
     margin: auto;
@@ -35,7 +47,7 @@ html, body, #root {
     box-shadow: 0 2px #1a7940;
     opacity: 0.8;
     border-radius: 1rem;
-    color: white;
+    color: black;
     cursor: pointer;
     margin-top: 25px;
 }
@@ -57,19 +69,20 @@ p {
 }
 
 .conten_image {
-    width: 20%;
+    width: 120px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 20px;
 }
 
 .conten_image:hover {
-    width: 30%;
+    width: 130px;
 }
 
 button {
     padding: 5px 30px;
     background-color: #5dca88;
+    color: black;
     cursor: pointer;
     box-shadow: 0 2px #1a7940;
     opacity: 0.8;

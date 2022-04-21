@@ -140,8 +140,8 @@ export default function Appbar({onChange, onSearch, user}) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" >
-        <Toolbar style={{backgroundColor:"#191414"}}>
+      <AppBar position="fixed" >
+        <Toolbar style={{backgroundColor:"#121212"}}>
           
           <Typography
             variant="h6"
