@@ -124,16 +124,9 @@ export default function Appbar({onChange, onSearch, user}) {
     >
       
       <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          
-        </IconButton>
-        <p>Profile</p>
+        <Avatar alt="profile" src={user.images[0].url} />
+        
+        <p style={{color:"black" }}>Profile </p>
       </MenuItem>
     </Menu>
   );
@@ -176,12 +169,12 @@ export default function Appbar({onChange, onSearch, user}) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <Avatar alt="Remy Sharp" src={user.images[0].url} />
+              <Avatar alt="profile" src={user.images[0].url} />
               {/* <img src={user.images[0].url} width={24} height={24} /> */}
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
+            <IconButton style={{backgroundColor:"#5dca88" }}
               size="large" 
               aria-label="show more"
               aria-controls={mobileMenuId}

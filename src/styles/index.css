@@ -1,6 +1,6 @@
-
-
-html, body, #root {
+html,
+body,
+#root {
     padding-top: 30px;
     height: 100%;
     color: black;
@@ -29,7 +29,7 @@ html, body, #root {
     border-radius: 15%;
     padding-top: 40px;
     padding-bottom: 50px;
-    
+
 }
 
 .conten:hover {
@@ -87,7 +87,7 @@ button {
     box-shadow: 0 2px #1a7940;
     opacity: 0.8;
     border-radius: 1rem;
-    
+
 }
 
 button:hover {
@@ -112,9 +112,10 @@ form button {
     margin-top: 10px;
 }
 
-input, textarea {
-    background-color: white ;
-    
+input,
+textarea {
+    background-color: white;
+
 }
 
 label {
@@ -144,7 +145,7 @@ label {
     height: 190px;
     width: 200px;
     padding-left: 10px;
-    
+
 }
 
 
@@ -160,3 +161,45 @@ label {
 }
 
 
+@media all and (max-width: 1050px) {
+    .main-conten {
+        width: 50%;
+        margin-bottom: 50px;
+        display: grid;
+        width: fit-content;
+        grid-template-columns: auto auto auto;
+        grid-row-gap: 20px;
+        grid-column-gap: 10px;
+        color: black;
+        margin: 0 auto 0 auto;
+    }
+}
+
+@media all and (max-width: 860px) {
+    .main-conten {
+        width: 50%;
+        margin-bottom: 50px;
+        display: grid;
+        width: fit-content;
+        grid-template-columns: auto auto;
+        grid-row-gap: 20px;
+        grid-column-gap: 10px;
+        color: black;
+        margin: 0 auto 0 auto;
+    }
+}
+
+@media all and (max-width: 670px) {
+    .main-conten {
+        width: 50%;
+        margin-bottom: 50px;
+        display: grid;
+        width: fit-content;
+        grid-template-columns: auto;
+        grid-row-gap: 20px;
+        grid-column-gap: 10px;
+        color: black;
+        margin: 0 auto 0 auto;
+    
+    }
+}
