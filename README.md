@@ -11,7 +11,8 @@ Sapitify is an application that can let you directly create your Spotify playlis
 - To view a user's profile or avatar 🧑👧
 - To go to the profile link of the user 
 - Logout feature to exit the Sapitify app 🔚
-- Responsive Webiste (PC/Desktop, Tablet, and Smarthphone) 💻📱
+- Responsive Website (PC/Desktop, Tablet, and Smarthphone) 💻📱
+- If you haven't searched for a song, it will show the text "Track Empty"
 
 
 ## Powered by
@@ -58,7 +59,7 @@ Sapitify is an application that can let you directly create your Spotify playlis
 - Open <http://localhost:3000> with your browser to see the result.
 
 
-Don't forget to change the redirect to the login.js file
+## Don't forget to change the redirect to the login.js file ⚠
 
     Previous
     ```login.js
