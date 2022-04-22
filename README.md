@@ -1,8 +1,8 @@
 # Sapitify
 Sapitify is an application that can let you directly create your Spotify playlist through this application.
-![sapitifylogo](./image/sapitifycrop.png)
-![ui_awal](./image/ui_awal.png)
-![ui_awal](./image/ui_search.png)
+![sapitifylogo](./src/image/sapitifycrop.png)
+![ui_awal](./src/image/ui_awal.png)
+![ui_awal](./src/image/ui_search.png)
 
 ## Feature 
 
