@@ -17,9 +17,10 @@ body,
     margin: 0 auto 0 auto;
 }
 
+
 .conten {
     height: 270px;
-    width: 320px;
+    width: 280px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,23 +50,30 @@ body,
     border-radius: 1rem;
     color: black;
     cursor: pointer;
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
 h2 {
     font-size: 1rem;
     color: white;
+    font-family: 'Franklin Gothic Medium'
 }
 
 h3 {
-    font-size: 14px;
+    font-size: 10px;
     color: white;
 }
 
 
 p {
-    font-size: 12px;
+    font-size: 14px;
     color: white;
+}
+
+.track {
+    font-size: 24px;
+    color: red;
+    
 }
 
 .conten_image {
@@ -106,21 +114,33 @@ a {
     flex-direction: column;
     margin: auto;
     padding-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 form button {
     margin-top: 10px;
+    width: 120px;
+    margin: auto;
+    margin-top: 10px;
 }
 
-input,
+input {
+    background-color: white;
+    width: 380px;
+    height: 30px;
+    font-size: large;
+}
 textarea {
     background-color: white;
-
+    width: 380px;
+    height: 100px;
+    font-size: large;
 }
 
 label {
     color: white;
     padding-bottom: 5px;
+    font-size: x-large;
 }
 
 .searchbar {
@@ -200,6 +220,19 @@ label {
         grid-column-gap: 10px;
         color: black;
         margin: 0 auto 0 auto;
-    
+
+    }
+
+    .playlist textarea, input {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding-bottom: 20px;
+        width: 90%;
+    }
+
+    .css-966uuyl {
+        width: 20%;
     }
 }

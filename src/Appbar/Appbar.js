@@ -12,7 +12,7 @@ import Menu from '@mui/material/Menu';
 
 import SearchIcon from '@mui/icons-material/Search';
 import Avatar from '@mui/material/Avatar';
-
+import {useNavigate} from 'react-router-dom';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import sapitifyy from "../image/sapitifycrop.png";
 import PropTypes from 'prop-types';
@@ -63,6 +63,9 @@ export default function Appbar({onChange, onSearch, user}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
+  const navigate = useNavigate()
+  
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -83,6 +86,11 @@ export default function Appbar({onChange, onSearch, user}) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const onLogout = () => {
+    sessionStorage.removeItem("token");
+    navigate("/login")
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -101,7 +109,7 @@ export default function Appbar({onChange, onSearch, user}) {
       onClose={handleMenuClose} 
     >
       <MenuItem onClick={handleMenuClose}> <a href={user.external_urls.spotify}>Profile</a> </MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout </MenuItem>
+      <MenuItem onClick={handleMenuClose}> <a onClick={onLogout}> Logout </a> </MenuItem>
     </Menu>
   );
 

@@ -87,7 +87,7 @@ export default function Home() {
               user={user}
             />
             {tracks.length === 0 && selects.length === 0 ? (
-              <p>Track Empty</p>
+              <p className="track">Track Empty</p>
             ) : (
               <Conten
                 tracks={tracks}
