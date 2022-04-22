@@ -7,6 +7,8 @@ type ContenProps = {
   selects: any[];
 };
 
+
+
 const Conten = ({ tracks, onSelected, onDeselected, selects }: ContenProps) => {
   return (
     <div className="main-conten">
@@ -74,6 +76,7 @@ const Conten = ({ tracks, onSelected, onDeselected, selects }: ContenProps) => {
                   <h2>{song.name}</h2>
                   <h3>{song.album.name}</h3>
                   <p>{song.artists[0].name}</p>
+                  <p className="durasi">{Math.floor (parseInt(song.duration_ms)/60000) + ":" + Math.floor ((parseInt(song.duration_ms)%60000)/1000) + " Menit"}</p>
                 </div>
               </a>
 

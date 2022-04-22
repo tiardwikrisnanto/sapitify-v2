@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, selectAuthorize } from "../slice/loginSlice";
 import { selectTracks, setTracks } from "../slice/trackSlice";
 import { getToken } from "../helpers/helper";
-
 import Appbar from "../Appbar/Appbar";
 
 
@@ -25,7 +24,7 @@ export default function Home() {
     dispatch(login(token));
   }
 
-  const [user, setUser] = useState({external_urls: {spotify: ''}, images: [{url: ''}]});
+  const [user, setUser] = useState({external_urls: {spotify: ''}, images: [{url: ''}], duration_ms:''});
 
   const [selects, setSelects] = useState([]);
 
