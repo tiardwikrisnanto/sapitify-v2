@@ -59,7 +59,7 @@ Sapitify is an application that can let you directly create your Spotify playlis
 - Open <http://localhost:3000> with your browser to see the result.
 
 
-## Don't forget to change the redirect to the login.js file ⚠
+- ❗ Don't forget to change the redirect to the login.js file ⚠
 
     Previous
     ```login.js
